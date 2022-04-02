@@ -22,7 +22,7 @@ Personal Assistant is a web based application developed using spring boot, thyme
 Clone the project
 
 ```bash
-  git clone git@github.com:wicc2022/WICC-Java.git
+  git clone git@github.com:saphalpathak/Personal-Assistant.git
 ```
 
 
