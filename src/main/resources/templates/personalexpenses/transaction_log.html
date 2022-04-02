@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="wwww.thymeleaf.org" th:replace="fragments/personal_expenses_fragment::navbar(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <a th:href="@{/transaction/home}" class="arrow">
+            <i class="fa-solid fa-arrow-left fa-xl"></i>
+        </a>
+        <div class="container text-center">
+            <h3 th:text="${heading}" class="arrow"></h3>
+            <table class="table table-success table-striped" style="margin-top: 10px">
+                <thead>
+                <tr>
+                    <th scope="col">S.N</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Description</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="i, loop: ${allTransaction}">
+                    <th th:text="${loop.count}"></th>
+                    <td th:text="${#strings.substring(i.getTransactionDate(),0,10)}"></td>
+                    <td th:text="${i.getTitle()}" style="max-width: 100px;overflow-wrap: break-word"></td>
+                    <td th:text="${i.getAmount()}"></td>
+                    <td th:text="${i.getCategory().getName()}"></td>
+                    <td th:text="${i.getDescription()}" style="max-width: 170px;
+                                                                 overflow-wrap: break-word;
+                                                                 text-overflow: ellipsis;">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">
+                <a  th:href="@{/transaction/all/export}" style="color: black;text-decoration: none">
+                    Export to excel
+                </a>
+            </button>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

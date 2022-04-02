@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="wwww.thymeleaf.org" th:replace="fragments/todo_fragment::navbar(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Task</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 form">
+                <a th:href="@{/todo/home}" class="arrow">
+                    <i class="fa-solid fa-arrow-left fa-xl"></i>
+                </a>
+                <div class="text-center">
+                    <h3 th:text="${heading}" class="arrow"></h3>
+                </div>
+                <div class="container text-center todo-dis">
+                    <div class="rec-data" style="height: 80px">
+                        <div class="text-start">
+                            <data th:text="${data.getTitle()}" class="rec-data-text" value=""></data>
+                        </div>
+                    </div>
+                    <div class="rec-data" style="height: 310px">
+                        <div class="text-start">
+                            <div class="text-center">
+                                <text th:text="${#strings.substring(data.getDueDate(),0,10)}"
+                                      style="margin-left: 10px;text-decoration: underline">
+                                </text>
+                                <br/>
+                            </div>
+                            <text th:text="${data.getDescription()}" class="rec-data-text"></text>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

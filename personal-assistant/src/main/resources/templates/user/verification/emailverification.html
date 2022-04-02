@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="wwww.thymeleaf.org" th:replace="fragments/home_fragment::navbar(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Verification</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 form">
+                <a th:href="@{/user/signup}"  class="arrow">
+                    <i class="fa-solid fa-arrow-left fa-xl"></i>
+                </a>
+                <div class="container text-center">
+                    <h3 class="heading">Verify Email</h3>
+                    <hr/>
+                </div>
+                <form th:action="@{/user/verify}" th:method="post" th:object="${userDto}">
+                    <h4>We have sent verification code to your email. Please check your email to verify your account. </h4>
+                    <div class="mb-3">
+                        <label for="userVerification" class="form-label">Enter your verification code</label>
+                        <input type="text" class="form-control" th:field="*{verificationCode}" id="userVerification" placeholder="Verification Code">
+                    </div>
+
+                    <div class="container text-center">
+                        <button type="submit" class="button">Verify</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

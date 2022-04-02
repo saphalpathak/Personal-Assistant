@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="wwww.thymeleaf.org" th:replace="fragments/todo_fragment::navbar(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <a th:href="@{/todo/home}" class="arrow">
+            <i class="fa-solid fa-arrow-left fa-xl"></i>
+        </a>
+        <div class="container text-center">
+            <h3 th:text="${heading}" class="arrow"></h3>
+            <table class="table table-success table-striped" style="margin-top: 10px">
+                <thead>
+                <tr>
+                    <th scope="col">S.N</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="i, loop: ${allTask}">
+                    <th th:text="${loop.count}"></th>
+                    <td th:text="${i.getTitle()}" style="max-width: 170px;
+                                                                 overflow: hidden;
+                                                                 text-overflow: ellipsis;">
+                    </td>
+                    <td th:text="${#strings.substring(i.getDueDate(),0,10)}"></td>
+                    <td>
+                        <a th:href="@{~/todo/desc/}+${i.getId()}" data-toggle="tooltip" title="View">
+                            <i class="fa-solid fa-eye me-3"></i>
+                        </a>
+
+                        <a th:href="@{~/todo/completed/}+${i.getId()}" data-toggle="tooltip" title="Mark as complete">
+                            <i class="fa-solid fa-circle-check me-3"></i>
+                        </a>
+                        <a th:href="@{~/todo/update/}+${i.getId()}"  data-toggle="tooltip" title="Update    ">
+                            <i class="fa-solid fa-pen me-3"></i>
+                        </a>
+                        <a th:href="@{~/todo/delete/}+${i.getId()}" data-toggle="tooltip" title="Delete">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+</body>
+</html>

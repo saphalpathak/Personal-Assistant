@@ -1,0 +1,73 @@
+.banner{
+    margin-top: 10px;
+    height: 120px;
+    background-color: #20bf55;
+    background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+    padding: 20px 0 10px 10px;
+}
+.headings{
+    color: white;
+}
+.rectangle{
+    display: inline-block;
+    margin-right: 20px;
+    color: #2d2f2f;
+    padding: 15px;
+    margin-top: 20px;
+    width:450px;
+    height:300px;
+    border:2px solid #01baef;
+    border-radius: 40px;
+}
+.table-data{
+    font-size: 16px;
+    font-weight: bold;
+    color: #171616;
+    width: 297px;
+    position: absolute;
+    overflow: hidden;
+}
+.cmp{
+    position: fixed;
+    display: none;
+}
+.todo-dis{
+    display: inline-block;
+    margin-right: 20px;
+    color: #2d2f2f;
+    padding: 15px;
+    margin-top: 20px;
+    width:620px;
+    height:430px;
+    border:2px solid  #009688;
+    border-radius: 40px;
+}
+.rec-data{
+    display: inline-block;
+    margin-right: 20px;
+    color: #2d2f2f;
+    padding: 10px;
+    margin-top: 15px;
+    width:580px;
+    height:min-content;
+    border:2px solid #009688;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+a{
+    text-decoration: none;
+}
+.rec-data-text{
+    padding-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #171616;
+    width: 550px;
+    height: 100px;
+    position: absolute;
+    overflow-wrap: break-word;
+}
+
+

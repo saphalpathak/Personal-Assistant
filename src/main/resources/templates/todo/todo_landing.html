@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="wwww.thymeleaf.org" th:replace="fragments/todo_fragment::navbar(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+</head>
+<body>
+<section>
+    <div class="banner">
+        <div class="headings">
+            <h1>Today</h1>
+            <h3 th:text="${currentDate}"></h3>
+        </div>
+    </div>
+    <div class="rectangle">
+        <h2 class="text-center">Today's Tasks</h2>
+        <div>
+            <table>
+                <tbody>
+                <tr th:each="task : ${todayTask}">
+                    <td>
+                        <a th:href="@{~/todo/completed/}+${task.getId()}" data-toggle="tooltip" title="Mark as complete">
+                            <i class="fa-solid fa-circle-check me-3"></i>
+                        </a>
+                        <a th:href="@{~/todo/desc/}+${task.getId()}">
+                            <data th:text="${task.getTitle()}" class="table-data ms-2" value=""></data>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{~/todo/important/}+${task.getId()}"  data-toggle="tooltip" title="Mark as important">
+                            <i class="fa-solid fa-star" style="margin-left: 370px"></i>
+                        </a>
+                        <a th:href="@{~/todo/delete/}+${task.getId()}"  data-toggle="tooltip" title="Delete">
+                            <i class="fa-solid fa-trash" style="margin-left: 373px"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="rectangle">
+        <h2 class="text-center">Completed Tasks</h2>
+        <div>
+            <table>
+                <tbody>
+                <tr th:each="task : ${completedTask}">
+                    <td>
+                        <a th:href="@{~/todo/desc/}+${task.getId()}">
+                            <data th:text="${task.getTitle()}" class="table-data" value=""></data>
+                        </a>
+                        <a th:href="@{~/todo/delete/}+${task.getId()}"  data-toggle="tooltip" title="Delete">
+                            <i class="fa-solid fa-trash" style="margin-left: 400px"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br/>
+    <div style="margin: 15px 0 0 150px">
+        <a th:href="@{/todo/add}" style="text-decoration: none">
+            <h3><i class="fa-solid fa-plus"></i> Add Task</h3></a>
+    </div>
+    <script>
+        $(document).ready(function (){
+            $('[data-toggle="tooltip"]').tooltip();
+        })
+    </script>
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossOrigin="anonymous"></script>
+</section>
+</body>
+</html>

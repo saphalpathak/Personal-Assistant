@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="wwww.thymeleaf.org" th:replace="fragments/todo_fragment::navbar(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Task</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 form">
+                <a th:href="@{/todo/home}" class="arrow">
+                    <i class="fa-solid fa-arrow-left fa-xl"></i>
+                </a>
+                <div class="container text-center">
+                    <img th:src="@{/images/signup.png}" alt="" src="" class="logo">
+                    <p class="text-info" th:text="${message}"></p>
+                </div>
+                <form th:action="@{/todo/create}" th:method="post" th:object="${todoDto}">
+                    <div class="mb-3">
+                        <label for="todoTitle" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="todoTitle" th:field="*{title}" placeholder="Title">
+                        <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-danger"></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="todoDis" class="form-label">Description</label>
+                        <textarea type="text" class="form-control" th:field="*{description}" id="todoDis"
+                                  placeholder="Description"></textarea>
+                        <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
+                           class="text-danger"></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="todoDueDate" class="form-label">Due Date</label>
+                        <input type="date" class="form-control" th:field="*{dueDate}" id="todoDueDate"
+                               placeholder="Due Date">
+                        <p th:if="${#fields.hasErrors('dueDate')}" th:errors="*{dueDate}" class="text-danger"></p>
+                    </div>
+                    <div class="container text-center">
+                        <button type="submit" class="btn btn-primary" style="text-align: center">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

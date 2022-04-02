@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="wwww.thymeleaf.org" th:replace="fragments/personal_expenses_fragment::navbar(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 form">
+                <a th:href="@{/transaction/home}"  class="arrow">
+                    <i class="fa-solid fa-arrow-left fa-xl"></i>
+                </a>
+                <div class="container text-center">
+                    <img th:src="@{/images/signup.png}"  alt="" src="" class="logo">
+                    <p class="text-info" th:text="${message}"></p>
+                </div>
+                <form th:action="@{/transaction/create}" th:method="post" th:object="${transactionDto}">
+                    <div class="mb-3">
+                        <label for="transactionTitle" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="transactionTitle" th:field="*{title}" placeholder="Title">
+                        <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-danger"></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="transactionDis" class="form-label">Description</label>
+                        <textarea type="text" class="form-control" th:field="*{description}" id="transactionDis"
+                                  placeholder="Description"></textarea>
+                        <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger"></p>
+                    </div>
+
+                    <div class="select">
+                        <label for="transactionCategory" class="form-label">Category</label>
+                        <div class="col-sm-8">
+                            <select th:field="*{category}" class="form-label" id="transactionCategory">
+                                <option th:each="cat : ${categoryData}" th:text="${cat.getName()}" th:value="${cat.getId()}"></option>
+                            </select>
+                            <p th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="text-danger"></p>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="transactionAmount" class="form-label">Amount</label>
+                        <input type="number" class="form-control" id="transactionAmount" th:field="*{amount}" placeholder="Amount">
+                        <p th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" class="text-danger"></p>
+                    </div>
+
+                    <div class="container text-center">
+                        <button type="submit" class="btn btn-primary" style="text-align: center">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="wwww.thymeleaf.org" th:replace="fragments/personal_expenses_fragment::navbar(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 form">
+                <a th:href="@{/transaction-category/home}"  class="arrow">
+                    <i class="fa-solid fa-arrow-left fa-xl"></i>
+                </a>
+                <div class="container text-center">
+                    <img th:src="@{/images/signup.png}"  alt="" src="" class="logo">
+                    <p class="text-info" th:text="${message}"></p>
+                </div>
+                <form th:action="@{/transaction-category/create}" th:method="post" th:object="${categoryDto}">
+                    <div class="mb-3">
+                        <label for="categoryName" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="categoryName" th:field="*{name}" placeholder="Name">
+                        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="categoryDis" class="form-label">Description</label>
+                        <textarea type="text" class="form-control" th:field="*{description}" id="categoryDis"
+                                  placeholder="Description"></textarea>
+                        <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger"></p>
+                    </div>
+                    <div class="select">
+                        <label for="transactionStatus" class="form-label">Transaction Status</label>
+                        <div class="col-sm-8">
+                            <select th:field="*{transactionStatus}" class="form-label" id="transactionStatus">
+                                <option th:each="status :${T(com.wicc.personalassistant.enums.TransactionStatus).values()}"
+                                        th:value="${status}" th:text="${status}">Income</option>
+                            </select>
+                            <p th:if="${#fields.hasErrors('transactionStatus')}" th:errors="*{transactionStatus}" class="text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="container text-center">
+                        <button type="submit" class="btn btn-primary" style="text-align: center">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

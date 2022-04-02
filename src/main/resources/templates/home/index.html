@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="wwww.thymeleaf.org" th:replace="fragments/home_fragment::navbar(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+</head>
+<body>
+<section>
+    <div class="external-card">
+        <div class="card">
+            <div class="weather">
+                <h2 class="city"></h2>
+                <h1 class="temp"></h1>
+                <div class="flex">
+                    <img src="https://openweathermap.org/img/wn/04n.png" alt="" class="icon" />
+                </div>
+                <div class="humidity"></div>
+                <div class="wind"></div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="wwww.thymeleaf.org" th:replace="fragments/home_fragment::navbar(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 form">
+                <div class="container text-center">
+                    <div th:if="${param.error}" class="alert alert-danger">
+                        Invalid email and password
+                    </div>
+                    <div th:if="${param.logout}" class="alert alert-danger">
+                        You have been logged out
+                    </div>
+                    <h3 class="heading">Login</h3>
+                    <hr/>
+                    <p th:text="${message}"></p>
+                </div>
+                <form th:action="@{/user/login}" th:method="post">
+
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="username" id="username" placeholder="Email">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Email</label>
+                        <input type="password" class="form-control" name="password" id="password"
+                               placeholder="Password">
+                    </div>
+                    <a th:href="@{/user/forgot-password}" style="margin-left: 5px" class="urls">Forgot Password</a>
+                    <div class="container text-center">
+                        <button type="submit" class="button">Login</button>
+                    </div>
+                    <div class="text-center mt-3">
+                        <a th:href="@{/user/signup}" class="urls">Create an account</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

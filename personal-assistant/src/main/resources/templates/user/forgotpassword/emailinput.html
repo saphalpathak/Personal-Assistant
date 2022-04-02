@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="wwww.thymeleaf.org" th:replace="fragments/home_fragment::navbar(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Change Password</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 form">
+                <a th:href="@{/user/signup}"  class="arrow">
+                    <i class="fa-solid fa-arrow-left fa-xl"></i>
+                </a>
+                <div class="text-center">
+                    <h4>Please enter your email to change password</h4>
+                    <p th:text="${message}" class="text-danger"></p>
+                </div>
+                <form th:action="@{/user/send-otp}" th:method="post" th:object="${userDto}">
+                    <div class="mb-3">
+                        <label for="userVerification"></label><input type="email" class="form-control" th:field="*{email}" id="userVerification" placeholder="Email">
+                    </div>
+
+                    <div class="container text-center">
+                        <button type="submit" class="button">Send otp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>
